@@ -16,7 +16,7 @@ class Provider extends AbstractProvider
     /**
      * {@inheritdoc}
      */
-    protected $scopes = ['users', 'pledges-to-me', 'my-campaign'];
+    protected $scopes = ['identity', 'identity[email]'];
 
     /**
      * {@inherticdoc}.
@@ -48,8 +48,13 @@ class Provider extends AbstractProvider
     protected function getUserByToken($token)
     {
         $response = $this->getHttpClient()->get(
-            'https://api.patreon.com/oauth2/api/current_user',
+            'https://www.patreon.com/api/oauth2/v2/identity',
             [
+                'query' => [
+                    'fields' => [
+                        'user' => 'email,full_name,image_url,vanity',
+                    ],
+                ],
                 'headers' => [
                     'Accept'        => 'application/json',
                     'Authorization' => 'Bearer '.$token,
