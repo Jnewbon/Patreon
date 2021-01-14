@@ -51,6 +51,7 @@ class Provider extends AbstractProvider
             'https://www.patreon.com/api/oauth2/v2/identity',
             [
                 'query' => [
+                    'include' => 'memberships',
                     'fields' => [
                         'user' => 'email,full_name,image_url,vanity',
                     ],
