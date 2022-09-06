@@ -14,7 +14,7 @@ class Provider extends AbstractProvider
     /**
      * {@inheritdoc}
      */
-    protected $scopes = ['identity', 'identity[email]', 'identity.memberships'];
+    protected $scopes = ['identity', 'identity[email]'];
 
     /**
      * {@inherticdoc}.
